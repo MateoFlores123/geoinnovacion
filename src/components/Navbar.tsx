@@ -71,7 +71,7 @@ export function Navbar() {
               aria-label={`Contactar por ${nav.whatsapp.label}`}
             >
               <WhatsAppIcon />
-              <span>Únete en</span>
+              
               <strong>WhatsApp</strong>
             </a>
 
