@@ -1,0 +1,155 @@
+/* ============================================================
+   HERO — GEOINNOVACIÓN
+   ============================================================ */
+
+.hero {
+  position: relative;
+  width: 100%;
+  /* Altura total de pantalla menos ambos navs */
+  min-height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-top: var(--nav-total-height);
+}
+
+/* ── Imagen de fondo ── */
+.bgImage {
+  object-fit: cover;
+  object-position: center top;
+  z-index: 0;
+}
+
+/* ── Overlay con gradiente: izquierda más oscura para legibilidad del texto ── */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    105deg,
+    rgba(5, 15, 8, 0.72) 0%,
+    rgba(5, 15, 8, 0.50) 45%,
+    rgba(5, 15, 8, 0.10) 75%,
+    transparent 100%
+  );
+}
+
+/* ── Contenido textual (izquierda) ── */
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* ── Título h1 ── */
+.title {
+  font-family: var(--font-raleway);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--color-hero-title);
+  line-height: 1.2;
+  max-width: 600px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.55);
+  /* Animación de entrada */
+  animation: fadeUp 0.8s ease both;
+}
+
+/* ── Tags ── */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  max-width: 480px;
+  animation: fadeUp 0.9s 0.15s ease both;
+}
+
+.tag {
+  font-family: var(--font-montserrat);
+  font-size: clamp(12px, 1.2vw, 15px);
+  font-weight: 500;
+  color: var(--color-hero-tag);
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.7);
+  position: relative;
+  padding-left: 14px;
+}
+/* Punto decorativo antes de cada tag */
+.tag::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.85;
+}
+
+/* ── Imagen de la persona (esquina inferior derecha) ── */
+.personWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: clamp(280px, 38vw, 520px);
+  height: clamp(320px, 65vh, 700px);
+  z-index: 2;
+  /* Fade-in desde abajo */
+  animation: personIn 1s 0.2s ease both;
+}
+
+.personImage {
+  object-fit: contain;
+  object-position: bottom right;
+}
+
+/* ─────────────────── ANIMACIONES ─────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes personIn {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─────────────────── RESPONSIVE ─────────────────── */
+@media (max-width: 768px) {
+  .content {
+    padding: 0 24px;
+  }
+
+  .title {
+    max-width: 100%;
+  }
+
+  .tags {
+    max-width: 100%;
+  }
+
+  .personWrapper {
+    width: clamp(180px, 55vw, 320px);
+    height: clamp(220px, 50vw, 380px);
+    opacity: 0.7;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 0 16px;
+  }
+
+  .personWrapper {
+    width: 55vw;
+    opacity: 0.6;
+  }
+}

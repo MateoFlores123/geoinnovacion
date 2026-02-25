@@ -1,0 +1,159 @@
+/* ============================================================
+   SECCIÓN SERVICIOS — 4 bloques alternados
+   ============================================================ */
+
+.wrapper {
+  width: 100%;
+}
+
+/* ── Bloque individual ── */
+.bloque {
+  display: flex;
+  align-items: center;
+  min-height: clamp(360px, 48vw, 560px);
+  padding: 60px clamp(32px, 6vw, 100px);
+  gap: clamp(32px, 5vw, 80px);
+
+  /* Degradado teal de izquierda a derecha usando CSS custom properties */
+  background: linear-gradient(
+    120deg,
+    var(--grad-from) 0%,
+    var(--grad-to) 100%
+  );
+
+  /* Patrón de ondas SVG superpuesto — mismo estilo del carrusel */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='560' viewBox='0 0 1440 560'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1.5' d='M0 280 C240 180, 480 380, 720 280 S1200 180, 1440 280'/%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1.2' d='M0 380 C240 280, 480 480, 720 380 S1200 280, 1440 380'/%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1' d='M0 180 C240 80, 480 280, 720 180 S1200 80, 1440 180'/%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1' d='M0 460 C360 320, 720 560, 1080 420 S1440 360, 1440 460'/%3E%3C/svg%3E"),
+    linear-gradient(120deg, var(--grad-from) 0%, var(--grad-to) 100%);
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+}
+
+/* Versión invertida: imagen a la izquierda, texto a la derecha */
+.bloqueInverso {
+  flex-direction: row-reverse;
+}
+
+/* ── Panel de texto ── */
+.panelTexto {
+  flex: 0 0 42%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeInLeft 0.6s ease both;
+}
+
+.bloqueInverso .panelTexto {
+  animation-name: fadeInRight;
+}
+
+.label {
+  font-family: var(--font-montserrat);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.titulo {
+  font-family: var(--font-raleway);
+  font-size: clamp(28px, 3.5vw, 50px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+}
+
+.descripcion {
+  font-family: var(--font-montserrat);
+  font-size: clamp(12px, 1.1vw, 15px);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+/* ── Panel de imagen ── */
+.panelImagen {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInRight 0.6s ease both;
+}
+
+.bloqueInverso .panelImagen {
+  animation-name: fadeInLeft;
+}
+
+/* Marco blanco con sombra — el efecto "cuadro" de la imagen */
+.marcoImagen {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 4 / 3;
+  border: 8px solid #ffffff;
+  border-radius: 4px;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.20),
+    0 2px 8px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.marcoImagen:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 16px 56px rgba(0, 0, 0, 0.25),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.imagen {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.marcoImagen:hover .imagen {
+  transform: scale(1.04);
+}
+
+/* ── Animaciones de entrada ── */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .bloque,
+  .bloqueInverso {
+    flex-direction: column;
+    padding: 48px 28px;
+    gap: 32px;
+    min-height: auto;
+  }
+
+  .panelTexto { flex: none; }
+
+  .marcoImagen {
+    max-width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .descripcion { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .bloque { padding: 36px 20px; }
+  .marcoImagen { border-width: 5px; }
+}
