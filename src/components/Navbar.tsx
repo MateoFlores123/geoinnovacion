@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { siteConfig } from "@/config/site";
 import styles from "./Navbar.module.css";
 
@@ -18,6 +18,7 @@ const translations = {
       { label: "Innovación",            href: "#innovacion" },
       { label: "Contacto",              href: "#contacto"   },
     ],
+    whatsappTop: "Únete en",
     whatsappBtn: "WhatsApp",
     openMenu: "Abrir menú",
     closeMenu: "Cerrar menú",
@@ -41,7 +42,7 @@ const translations = {
 /* ══════════════════════════════════════════
    ICONOS SVG por sección
 ══════════════════════════════════════════ */
-const NavIcons: Record<string, JSX.Element> = {
+const NavIcons: Record<string, React.ReactElement> = {
   "#inicio": (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"
       strokeLinecap="round" strokeLinejoin="round" width="18" height="18" aria-hidden="true">
@@ -90,7 +91,7 @@ const NavIcons: Record<string, JSX.Element> = {
 /* ══════════════════════════════════════════
    ICONOS SOCIALES
 ══════════════════════════════════════════ */
-const SocialIcons: Record<string, JSX.Element> = {
+const SocialIcons: Record<string, React.ReactElement> = {
   instagram: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"
       strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" width="20" height="20">
