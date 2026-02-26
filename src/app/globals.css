@@ -22,7 +22,7 @@
   --color-hero-tag:       #d4e8d0;
 
   /* ── Tamaños ── */
-  --nav-top-height:    68px;
+  --nav-top-height:    72px;
   --nav-bottom-height: 48px;
   --nav-total-height:  calc(var(--nav-top-height) + var(--nav-bottom-height));
 }
@@ -66,4 +66,11 @@ img {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --nav-top-height: 60px;
+    --nav-total-height: calc(60px + 48px);
+  }
 }

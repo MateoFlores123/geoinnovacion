@@ -287,20 +287,126 @@
   100%{ opacity: 0; transform: translateY(0); }
 }
 
-/* ── Responsive ── */
+/* ══════════════════════════════════════════
+   RESPONSIVE TABLET 541–768px
+══════════════════════════════════════════ */
 @media (max-width: 768px) {
-  .content { padding: 0 24px; gap: 22px; }
+  .content { padding: 0 24px; gap: 18px; padding-bottom: 180px; }
   .personWrapper {
-    width: clamp(180px, 52vw, 300px);
-    height: clamp(220px, 48vw, 380px);
-    opacity: 0.55;
+    width: 62vw;
+    height: 74vw;
+    max-width: 380px;
+    max-height: 500px;
   }
-  .personInfo { bottom: 16px; right: 16px; }
-  .scrollIndicator { left: 24px; }
+  .personInfo     { bottom: 12px; right: 12px; }
+  .personName     { font-size: 11px; }
+  .personLocation { font-size: 9px; }
+  .scrollIndicator { left: 22px; }
 }
 
-@media (max-width: 480px) {
-  .content { padding: 0 18px; }
-  .personWrapper { opacity: 0.40; }
-  .ctas { flex-direction: column; align-items: flex-start; gap: 12px; }
+/* ══════════════════════════════════════════
+   RESPONSIVE MÓVIL ≤ 540px
+   Foto = fondo full screen
+   Texto flota arriba a la izquierda
+══════════════════════════════════════════ */
+@media (max-width: 540px) {
+
+  /* Hero ocupa toda la pantalla */
+  .hero {
+    display: block;
+    position: relative;
+    min-height: 100svh;
+    padding-top: var(--nav-total-height);
+    overflow: hidden;
+    align-items: flex-start;
+  }
+
+  /* Foto grande esquina inferior derecha */
+  .personWrapper {
+    position: absolute;
+    bottom: 0;
+    right: -50px;
+    width: 150%;
+    height: 150%;
+    max-width: none;
+    max-height: none;
+    z-index: 1;
+    animation: none;
+    opacity: 1;
+  }
+
+  .personImage {
+    object-fit: contain;
+    object-position: bottom right;
+  }
+
+  /* Gradiente oscuro solo en el lado izquierdo para que el texto sea legible */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+      linear-gradient(100deg,
+        rgba(4, 16, 10, 0.82) 0%,
+        rgba(4, 16, 10, 0.60) 42%,
+        rgba(4, 16, 10, 0.15) 65%,
+        transparent 80%
+      ),
+      linear-gradient(to top,
+        rgba(4, 16, 10, 0.55) 0%,
+        transparent 35%
+      );
+  }
+
+  /* Texto más cerca del borde izquierdo */
+  .content {
+    position: relative;
+    z-index: 3;
+    width: 55%;
+    max-width: 55%;
+    /* padding-left pequeño = más cerca del borde izquierdo */
+    padding: 20px 0 20px 10px;
+    gap: 12px;
+    margin-left: 0;
+    /* Empuja el bloque al inicio (izquierda) */
+    align-self: flex-start;
+  }
+
+  .titleLine1 { font-size: 11px; letter-spacing: 0.06em; }
+  .titleLine2 { font-size: 9vw;  line-height: 1; letter-spacing: -0.01em; }
+  .titleLine3 { font-size: 7vw;  margin-top: 8px; }
+
+  /* Tags verticales */
+  .tags {
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 5px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .tag {
+    font-size: 8px;
+    padding: 4px 10px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  /* Nombre en esquina inferior derecha */
+  .personInfo {
+    position: absolute;
+    bottom: 70px;   /* Sube un poco para no quedar tapado por la barra de redes */
+    right: 14px;
+    z-index: 3;
+    text-align: right;
+  }
+  .personName     { font-size: 10px; letter-spacing: 0.05em; }
+  .personLocation { font-size: 8px; }
+
+  /* Overlays normales ya cubren el hero, el ::after añade el degradado lateral */
+  .overlay { display: none; }
+
+  .personGlow      { display: none; }
+  .scrollIndicator { display: none; }
 }

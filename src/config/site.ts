@@ -59,7 +59,7 @@ export const siteConfig = {
     ],
     whatsapp: {
       label: "WhatsApp",
-      href: "https://wa.me/34600000000",
+      href: "https://wa.me/943883777",
     },
   },
 

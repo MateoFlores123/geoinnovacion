@@ -18,24 +18,18 @@ const translations = {
       { label: "Innovación",            href: "#innovacion" },
       { label: "Contacto",              href: "#contacto"   },
     ],
-    whatsappTop: "Únete en",
     whatsappBtn: "WhatsApp",
-    openMenu: "Abrir menú",
-    closeMenu: "Cerrar menú",
   },
   EN: {
     links: [
-      { label: "Home",               href: "#inicio"     },
-      { label: "Energy Transition",  href: "#transicion" },
-      { label: "Circular Economy",   href: "#economia"   },
-      { label: "Tourism",            href: "#turismo"    },
-      { label: "Innovation",         href: "#innovacion" },
-      { label: "Contact",            href: "#contacto"   },
+      { label: "Home",              href: "#inicio"     },
+      { label: "Energy Transition", href: "#transicion" },
+      { label: "Circular Economy",  href: "#economia"   },
+      { label: "Tourism",           href: "#turismo"    },
+      { label: "Innovation",        href: "#innovacion" },
+      { label: "Contact",           href: "#contacto"   },
     ],
-    whatsappTop: "Join us on",
     whatsappBtn: "WhatsApp",
-    openMenu: "Open menu",
-    closeMenu: "Close menu",
   },
 };
 
@@ -45,20 +39,20 @@ const translations = {
 const NavIcons: Record<string, React.ReactElement> = {
   "#inicio": (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"
-      strokeLinecap="round" strokeLinejoin="round" width="18" height="18" aria-hidden="true">
+      strokeLinecap="round" strokeLinejoin="round" width="20" height="20" aria-hidden="true">
       <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/>
       <path d="M9 21V12h6v9"/>
     </svg>
   ),
   "#transicion": (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"
-      strokeLinecap="round" strokeLinejoin="round" width="18" height="18" aria-hidden="true">
+      strokeLinecap="round" strokeLinejoin="round" width="20" height="20" aria-hidden="true">
       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
     </svg>
   ),
   "#economia": (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"
-      strokeLinecap="round" strokeLinejoin="round" width="18" height="18" aria-hidden="true">
+      strokeLinecap="round" strokeLinejoin="round" width="20" height="20" aria-hidden="true">
       <polyline points="1 4 1 10 7 10"/>
       <polyline points="23 20 23 14 17 14"/>
       <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
@@ -66,7 +60,7 @@ const NavIcons: Record<string, React.ReactElement> = {
   ),
   "#turismo": (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"
-      strokeLinecap="round" strokeLinejoin="round" width="18" height="18" aria-hidden="true">
+      strokeLinecap="round" strokeLinejoin="round" width="20" height="20" aria-hidden="true">
       <circle cx="12" cy="12" r="10"/>
       <line x1="2" y1="12" x2="22" y2="12"/>
       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -74,7 +68,7 @@ const NavIcons: Record<string, React.ReactElement> = {
   ),
   "#innovacion": (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"
-      strokeLinecap="round" strokeLinejoin="round" width="18" height="18" aria-hidden="true">
+      strokeLinecap="round" strokeLinejoin="round" width="20" height="20" aria-hidden="true">
       <line x1="9" y1="18" x2="15" y2="18"/>
       <line x1="10" y1="22" x2="14" y2="22"/>
       <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/>
@@ -82,7 +76,7 @@ const NavIcons: Record<string, React.ReactElement> = {
   ),
   "#contacto": (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"
-      strokeLinecap="round" strokeLinejoin="round" width="18" height="18" aria-hidden="true">
+      strokeLinecap="round" strokeLinejoin="round" width="20" height="20" aria-hidden="true">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
     </svg>
   ),
@@ -119,25 +113,14 @@ const WhatsAppIcon = () => (
 );
 
 /* ══════════════════════════════════════════
-   NAVLINK con scroll suave
+   SCROLL SUAVE
 ══════════════════════════════════════════ */
-function NavLink({ href, label, onClick }: { href: string; label: string; onClick?: () => void }) {
-  function handleClick(e: React.MouseEvent) {
-    e.preventDefault();
-    const el = document.getElementById(href.slice(1));
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-    onClick?.();
+function scrollTo(href: string) {
+  const el = document.getElementById(href.slice(1));
+  if (el) {
+    const top = el.getBoundingClientRect().top + window.scrollY - 72;
+    window.scrollTo({ top, behavior: "smooth" });
   }
-
-  return (
-    <a href={href} onClick={handleClick} className={styles.navLink}>
-      {NavIcons[href]}
-      <span>{label}</span>
-    </a>
-  );
 }
 
 /* ══════════════════════════════════════════
@@ -145,7 +128,6 @@ function NavLink({ href, label, onClick }: { href: string; label: string; onClic
 ══════════════════════════════════════════ */
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [lang, setLang]         = useState<"ES" | "EN">("ES");
 
   useEffect(() => {
@@ -154,7 +136,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const t      = translations[lang];
+  const t = translations[lang];
   const { nav, social } = siteConfig;
 
   return (
@@ -166,96 +148,59 @@ export function Navbar() {
         >
           <div className={styles.topNavInner}>
 
-            {/* ── Logo imagen ── */}
-            <a
-              href="#inicio"
-              className={styles.logoLink}
+            {/* ── Logo ── */}
+            <a href="#inicio" className={styles.logoLink}
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              aria-label="GeoInnovación — Inicio"
-            >
-              <Image
-                src={nav.logoImage}
-                alt="GeoInnovación logo"
-                width={180}
-                height={44}
-                className={styles.logoImg}
-                priority
-              />
+              aria-label="GeoInnovación — Inicio">
+              <Image src={nav.logoImage} alt="GeoInnovación" width={180} height={44}
+                className={styles.logoImg} priority />
             </a>
 
-            {/* ── Links con iconos ── */}
+            {/* ── Links ESCRITORIO: icono + texto ── */}
             <ul className={styles.navLinks} role="list">
               {t.links.map((link) => (
                 <li key={link.href}>
-                  <NavLink href={link.href} label={link.label} />
+                  <a href={link.href} className={styles.navLink}
+                    onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
+                    aria-label={link.label}>
+                    {NavIcons[link.href]}
+                    <span>{link.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* ── Links MÓVIL: solo iconos ── */}
+            <ul className={styles.navLinksMobile} role="list" aria-label="Navegación">
+              {t.links.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} className={styles.navIconOnly}
+                    onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
+                    aria-label={link.label}>
+                    {NavIcons[link.href]}
+                  </a>
                 </li>
               ))}
             </ul>
 
             {/* ── Selector idioma ES | EN ── */}
             <div className={styles.langSwitch} role="group" aria-label="Seleccionar idioma">
-              <button
-                className={`${styles.langBtn} ${lang === "ES" ? styles.langActive : ""}`}
-                onClick={() => setLang("ES")}
-                aria-pressed={lang === "ES"}
-              >ES</button>
+              <button className={`${styles.langBtn} ${lang === "ES" ? styles.langActive : ""}`}
+                onClick={() => setLang("ES")} aria-pressed={lang === "ES"}>ES</button>
               <span className={styles.langDivider} aria-hidden="true">|</span>
-              <button
-                className={`${styles.langBtn} ${lang === "EN" ? styles.langActive : ""}`}
-                onClick={() => setLang("EN")}
-                aria-pressed={lang === "EN"}
-              >EN</button>
+              <button className={`${styles.langBtn} ${lang === "EN" ? styles.langActive : ""}`}
+                onClick={() => setLang("EN")} aria-pressed={lang === "EN"}>EN</button>
             </div>
 
-            {/* ── Botón WhatsApp ── */}
-            <a
-              href={nav.whatsapp.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.whatsappBtn}
-              aria-label="Contactar por WhatsApp"
-            >
+            {/* ── WhatsApp (solo escritorio) ── */}
+            <a href={nav.whatsapp.href} target="_blank" rel="noopener noreferrer"
+              className={styles.whatsappBtn} aria-label="Contactar por WhatsApp">
               <WhatsAppIcon />
               <div className={styles.whatsappBtnText}>
-                <span>{t.whatsappTop}</span>
                 <strong>{t.whatsappBtn}</strong>
               </div>
             </a>
 
-            {/* ── Hamburguesa ── */}
-            <button
-              className={`${styles.menuToggle} ${menuOpen ? styles.menuToggleOpen : ""}`}
-              aria-label={menuOpen ? t.closeMenu : t.openMenu}
-              aria-expanded={menuOpen}
-              onClick={() => setMenuOpen((o) => !o)}
-            >
-              <span /><span /><span />
-            </button>
-          </div>
-
-          {/* ── Menú móvil ── */}
-          <div
-            className={`${styles.mobileMenu} ${menuOpen ? styles.mobileMenuOpen : ""}`}
-            aria-hidden={!menuOpen}
-          >
-            <ul role="list">
-              {t.links.map((link) => (
-                <li key={link.href}>
-                  <NavLink href={link.href} label={link.label} onClick={() => setMenuOpen(false)} />
-                </li>
-              ))}
-            </ul>
-            <div className={styles.langSwitchMobile}>
-              <button className={`${styles.langBtn} ${lang === "ES" ? styles.langActive : ""}`}
-                onClick={() => setLang("ES")}>ES</button>
-              <span className={styles.langDivider}>|</span>
-              <button className={`${styles.langBtn} ${lang === "EN" ? styles.langActive : ""}`}
-                onClick={() => setLang("EN")}>EN</button>
-            </div>
-            <a href={nav.whatsapp.href} target="_blank" rel="noopener noreferrer"
-              className={styles.whatsappBtnMobile}>
-              <WhatsAppIcon /> WhatsApp
-            </a>
           </div>
         </nav>
       </header>

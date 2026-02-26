@@ -46,29 +46,6 @@ export function Hero() {
           <span className={styles.titleLine3}>¿Y tú?</span>
         </h1>
 
-        {/* CTAs */}
-        <div className={styles.ctas}>
-          <a href="#contacto" className={styles.ctaPrimary}
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
-            }}>
-            Hablemos
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-              strokeLinecap="round" strokeLinejoin="round" width="16" height="16" aria-hidden="true">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <polyline points="12 5 19 12 12 19"/>
-            </svg>
-          </a>
-          <a href="#diferentes" className={styles.ctaSecondary}
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("diferentes")?.scrollIntoView({ behavior: "smooth" });
-            }}>
-            Ver proyectos
-          </a>
-        </div>
-
         {/* Tags */}
         <ul className={styles.tags} aria-label="Áreas de oportunidad" role="list">
           {hero.tags.map((tag) => (
