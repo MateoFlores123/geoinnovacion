@@ -10,23 +10,17 @@ export function Servicios() {
       {servicios.map((servicio, index) => (
         <section
           key={servicio.id}
+          id={servicio.id}          /* ← ancla de navegación */
           className={`${styles.bloque} ${index % 2 !== 0 ? styles.bloqueInverso : ""}`}
-          style={
-            {
-              "--grad-from": servicio.gradientFrom,
-              "--grad-to":   servicio.gradientTo,
-            } as React.CSSProperties
-          }
+          style={{ "--grad-from": servicio.gradientFrom, "--grad-to": servicio.gradientTo } as React.CSSProperties}
           aria-label={servicio.title}
         >
-          {/* ── Panel izquierdo: texto ── */}
           <div className={styles.panelTexto}>
             <span className={styles.label}>{servicio.label}</span>
             <h2 className={styles.titulo}>{servicio.title}</h2>
             <p className={styles.descripcion}>{servicio.description}</p>
           </div>
 
-          {/* ── Panel derecho: imagen con marco ── */}
           <div className={styles.panelImagen}>
             <div className={styles.marcoImagen}>
               <Image

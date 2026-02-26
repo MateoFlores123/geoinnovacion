@@ -47,12 +47,15 @@ export const siteConfig = {
   // ─── NAVEGACIÓN PRINCIPAL (NAV SUPERIOR) ─────────────────
   nav: {
     logo: "GEOINNOVACION",
+    /** Imagen del logo — coloca el archivo en /public/images/ */
+    logoImage: "/images/logo-geo.png",
     links: [
-      { label: "Inicio",      href: "/" },
-      { label: "Hidrógeno",   href: "/hidrogeno" },
-      { label: "Reciclaje",   href: "/reciclaje" },
-      { label: "Innovación",  href: "/innovacion" },
-      { label: "Contacto",    href: "/contacto" },
+      { label: "Inicio",               href: "#inicio" },
+      { label: "Transición Energética", href: "#transicion" },
+      { label: "Economía Circular",     href: "#economia" },
+      { label: "Turismo",               href: "#turismo" },
+      { label: "Innovación",            href: "#innovacion" },
+      { label: "Contacto",              href: "#contacto" },
     ],
     whatsapp: {
       label: "WhatsApp",
@@ -72,7 +75,7 @@ export const siteConfig = {
 
   // ─── SECCIÓN HERO ─────────────────────────────────────────
   hero: {
-    backgroundImage: "/images/fondoHero.png",
+    backgroundImage: "/images/heroFondo.png",
     title: "I see only opportunities ! And you?",
     tags: [
       "Energy Transition",
@@ -83,7 +86,10 @@ export const siteConfig = {
       "Big Data",
     ],
     personImage: "/images/person-hero.png",
-    personAlt:   "Fundador de GeoInnovación",
+    personAlt:   "Jean-Louis Gelot — Fundador de GeoInnovación",
+    /** Nombre y ubicación que aparecen en la esquina inferior derecha del hero */
+    personName:     "Jean-Louis Gelot",
+    personLocation: "Arequipa — Perú",
   },
 
   // ─── SECCIÓN "LO QUE NOS HACE DIFERENTES" ────────────────
@@ -156,11 +162,11 @@ export const siteConfig = {
   // ─── SECCIÓN DE SERVICIOS (4 bloques) ────────────────────
   servicios: [
     {
-      id: "reciclaje",
+      id: "economia",
       /** Etiqueta pequeña encima del título */
       label: "SECTION",
       /** Título grande */
-      title: "RECICLAJE NEUMÁTICOS",
+      title: "ECONOMÍA CIRCULAR",
       /** Descripción */
       description:
         "Transformamos neumáticos fuera de uso en recursos de alto valor. Soluciones sostenibles para la industria del reciclaje con tecnología accesible y de impacto real.",
@@ -183,11 +189,11 @@ export const siteConfig = {
       gradientTo:   "#90D8D8",
     },
     {
-      id: "hidrogeno",
+      id: "turismo",
       label: "SECTION",
-      title: "HIDRÓGENO VERDE",
+      title: "TURISMO SOSTENIBLE",
       description:
-        "Producción, almacenamiento y distribución de hidrógeno verde para industrias del futuro. La energía más limpia del planeta, ahora al alcance de tu empresa.",
+        "Experiencias inmersivas y sostenibles que conectan viajeros con destinos únicos alrededor del mundo. La energía más limpia del planeta, ahora al alcance de tu empresa.",
       image: "/images/servicio-hidrogeno.jpg",
       imageAlt: "Moléculas de hidrógeno y estación de energía",
       gradientFrom: "#3D9E9E",
@@ -250,7 +256,7 @@ export const siteConfig = {
       namePlaceholder:    "Tu nombre completo",
       emailPlaceholder:   "Tu correo electrónico",
       subjectPlaceholder: "Asunto",
-      messagePlaceholder: "Cuéntanos sobre tu proyecto...",
+      messagePlaceholder: "Cuéntanos sobre la aventura que tienes en mente: qué solución te interesa, cuándo planeas iniciar, cuántas personas...",
       submitLabel:        "Enviar mensaje",
     },
   },
