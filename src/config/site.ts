@@ -59,7 +59,7 @@ export const siteConfig = {
     ],
     whatsapp: {
       label: "WhatsApp",
-      href: "https://wa.me/943883777",
+      href: "https://wa.me/34600000000",
     },
   },
 
@@ -67,9 +67,9 @@ export const siteConfig = {
   social: {
     label: "Síguenos",
     links: [
-      { name: "Instagram", href: "https://instagram.com/geoinnovacion", icon: "instagram" },
-      { name: "YouTube",   href: "https://youtube.com/@geoinnovacion",  icon: "youtube"   },
-      { name: "Facebook",  href: "https://facebook.com/geoinnovacion",  icon: "facebook"  },
+      { name: "Facebook", href: "https://facebook.com/geoinnovacion",               icon: "facebook"  },
+      { name: "LinkedIn", href: "https://linkedin.com/company/geoinnovacion",        icon: "linkedin"  },
+      { name: "WhatsApp", href: "https://wa.me/51999000000",                         icon: "whatsapp"  },
     ],
   },
 
@@ -92,123 +92,181 @@ export const siteConfig = {
     personLocation: "Arequipa — Perú",
   },
 
-  // ─── SECCIÓN "LO QUE NOS HACE DIFERENTES" ────────────────
+  // ─── SECCIÓN "OUR ADN" — Jean-Louis Gelot ───────────────
   diferentes: {
-    /** Título de la sección (cabecera gris claro) */
-    title: "LO QUE NOS HACE DIFERENTES",
-    /** Subtítulo / cita debajo del título */
-    subtitle:
-      '"Impulsamos a las industrias con soluciones tecnológicas simples, accesibles y de alto impacto para capacitación, mantenimiento y transformación digital."',
+    /** Etiqueta de sección — aparece como tag pill encima del título */
+    tagES: "NUESTRO ADN",
+    tagEN: "OUR ADN",
 
-    /** ── Slides del carrusel ──
-     *  Puedes añadir o quitar objetos de este array.
-     *  Cada slide tiene: brand, preTitle, title, description, bgColor, image, imageAlt
+    /** Nombre del protagonista — aparece como título grande */
+    name: "Jean-Louis Gelot",
+
+    /** Imagen fija que aparece a la derecha de la sección ADN */
+    image:    "/images/jl-portrait.jpg",
+    imageAlt: "Jean-Louis Gelot — GEOINNOVACION",
+
+    /** Texto del botón CTA en el último slide */
+    ctaLabelES: "Contactar",
+    ctaLabelEN: "Contact",
+
+    /**
+     * ── Slides del carrusel ──
+     * Cada slide = 1 párrafo / momento de la historia.
+     * eyebrowES/EN  → etiqueta pequeña encima del heading (p.ej. "El Fundador · 2018")
+     * headingES/EN  → título del slide (usa \n para salto de línea)
+     * paraES/EN     → párrafo de texto
+     * img           → imagen en /public/images/
+     * imgAlt        → texto alternativo de la imagen
+     * cta           → true en el último slide para mostrar el botón de contacto
      */
     slides: [
       {
-        id: "vr",
-        /** Texto pequeño tipo logo arriba del panel */
-        brand: "GEO🌍INNOVACION",
-        /** Texto fino encima del título grande */
-        preTitle: "Capacitación con",
-        /** Título grande — se renderiza en fuente display grande */
-        title: "Realidad Virtual",
-        /** Descripción corta */
-        description:
-          "Aprende con experiencias virtuales creadas en minutos, sin necesidad de software complejo.",
-        /** Color de fondo del panel izquierdo — prueba distintos colores */
-        bgColor: "#5BC8C8",
-        /** Imagen derecha — coloca el archivo en /public/images/ */
-        image: "/images/slide-vr.jpg",
-        imageAlt: "Persona usando casco de realidad virtual",
+        eyebrowES: "El Fundador · 2018",
+        eyebrowEN: "The Founder · 2018",
+        headingES: "Nacido en Francia,\narraigado en Arequipa",
+        headingEN: "Born in France,\nrooted in Arequipa",
+        paraES:
+          "GEOINNOVACION fue creada en 2018 en Arequipa, PERÚ, por Jean-Louis Gelot, ingeniero mecánico y geofísico francés con más de 45 años de experiencia en geociencias, minería, hidrocarburos y exploración de aguas subterráneas.",
+        paraEN:
+          "GEOINNOVACION was created in 2018 in Arequipa, PERU by Jean-Louis Gelot, a French mechanical and geophysical engineer with 45+ years of experience in geosciences, mining, hydrocarbons and underground water exploration, with a focus on related software solutions.",
+        img:    "/images/jl-01.jpg",
+        imgAlt: "Jean-Louis Gelot — fundador de GEOINNOVACION",
       },
       {
-        id: "hydrogen",
-        brand: "GEO🌍INNOVACION",
-        preTitle: "Energía limpia con",
-        title: "Hidrógeno Verde",
-        description:
-          "Soluciones de producción y almacenamiento de hidrógeno verde para industrias del futuro.",
-        bgColor: "#4AADAD",
-        image: "/images/slide-hydrogen.jpg",
-        imageAlt: "Estación de hidrógeno verde",
+        eyebrowES: "Experiencia · 45+ años",
+        eyebrowEN: "Experience · 45+ years",
+        headingES: "Geociencias &\nSoluciones de Software",
+        headingEN: "Geosciences &\nSoftware Solutions",
+        paraES:
+          "A lo largo de su carrera internacional, Jean-Louis trabajó en más de 20 países y se especializó en soluciones de software para la exploración geológica, minera y de hidrocarburos. Su red global le permite traer tecnología de punta a la región de Arequipa.",
+        paraEN:
+          "Throughout his international career, Jean-Louis worked in more than 20 countries and specialised in software solutions for geological, mining and hydrocarbon exploration. His global network allows him to bring cutting-edge technology to the Arequipa region.",
+        img:    "/images/jl-02.jpg",
+        imgAlt: "Jean-Louis trabajando en campo geológico",
       },
       {
-        id: "bigdata",
-        brand: "GEO🌍INNOVACION",
-        preTitle: "Decisiones con",
-        title: "Big Data",
-        description:
-          "Transforma tus datos en ventajas competitivas reales con herramientas accesibles para cualquier empresa.",
-        bgColor: "#3D9E9E",
-        image: "/images/slide-bigdata.jpg",
-        imageAlt: "Visualización de datos en pantalla",
+        eyebrowES: "Innovación · Arequipa",
+        eyebrowEN: "Innovation · Arequipa",
+        headingES: "Actor clave en el\necosistema regional",
+        headingEN: "A key actor in the\nregional ecosystem",
+        paraES:
+          "Gracias a su experiencia e influencia internacional, Jean-Louis es un actor clave en la región de Arequipa, estimulando la innovación y el emprendimiento, y representando a inversores internacionales que buscan llevar soluciones a los desafíos regionales.",
+        paraEN:
+          "Thanks to his experience and international network, Jean-Louis is a key actor in the Arequipa region, stimulating innovation and entrepreneurship and representing international investors bringing solutions to regional challenges.",
+        img:    "/images/jl-03.jpg",
+        imgAlt: "Jean-Louis en evento de innovación en Arequipa",
       },
       {
-        id: "tourism",
-        brand: "GEO🌍INNOVACION",
-        preTitle: "Turismo del",
-        title: "Futuro",
-        description:
-          "Experiencias inmersivas y sostenibles que conectan viajeros con destinos únicos alrededor del mundo.",
-        bgColor: "#5BC8C8",
-        image: "/images/slide-tourism.jpg",
-        imageAlt: "Destino turístico innovador",
+        eyebrowES: "Turismo · Inversión",
+        eyebrowEN: "Tourism · Investment",
+        headingES: "Hotel Boutique &\nMotorcycle Tours",
+        headingEN: "Boutique Hotel &\nMotorcycle Tours",
+        paraES:
+          "Jean-Louis también es inversor en turismo: es cofundador del Hotel Boutique Villa Elisa (villaelisahb.com) y creador de Vintage Rides Andes (vrandes.travel), una agencia de tours en moto por Sudamérica.",
+        paraEN:
+          "Jean-Louis is also an investor in tourism: co-founder of Hotel Boutique Villa Elisa (villaelisahb.com) and creator of Vintage Rides Andes (vrandes.travel), a motorcycle tour agency offering tours and raids across South America.",
+        img:    "/images/jl-04.jpg",
+        imgAlt: "Villa Elisa y Vintage Rides Andes",
+      },
+      {
+        eyebrowES: "Conectar",
+        eyebrowEN: "Connect",
+        headingES: "¿Quieres conectar\ncon Jean-Louis?",
+        headingEN: "Want to connect\nwith Jean-Louis?",
+        paraES:
+          "Si tienes un proyecto de innovación, una oportunidad de inversión o simplemente quieres conocer más sobre el ecosistema de Arequipa, Jean-Louis está disponible para conversar.",
+        paraEN:
+          "Whether you have an innovation project, an investment opportunity, or simply want to learn more about the Arequipa ecosystem — Jean-Louis is happy to connect.",
+        img:    "/images/jl-05.jpg",
+        imgAlt: "Jean-Louis Gelot — contacto",
+        cta:    true,
       },
     ],
   },
 
 
   // ─── SECCIÓN DE SERVICIOS (4 bloques) ────────────────────
+  // Cada servicio tiene un array `carouselImages` con las fotos
+  // que aparecen en el carrusel de esa sección.
+  // Para cambiar imágenes solo edita aquí — no toques los componentes.
   servicios: [
     {
       id: "economia",
-      /** Etiqueta pequeña encima del título */
-      label: "SECTION",
-      /** Título grande */
-      title: "ECONOMÍA CIRCULAR",
-      /** Descripción */
-      description:
-        "Transformamos neumáticos fuera de uso en recursos de alto valor. Soluciones sostenibles para la industria del reciclaje con tecnología accesible y de impacto real.",
-      /** Imagen derecha — coloca el archivo en /public/images/ */
-      image: "/images/servicio-reciclaje.jpg",
-      imageAlt: "Ilustración de reciclaje industrial y energía",
-      /** Colores del degradado de fondo: de izquierda a derecha */
       gradientFrom: "#5BC8C8",
       gradientTo:   "#A8E6E6",
+      /** Imágenes del carrusel — añade o quita objetos libremente */
+      carouselImages: [
+        { src: "/images/servicio-reciclaje.jpg",  alt: "Tecnología RUBBERJET",          captionES: "RUBBERJET Technology",       captionEN: "RUBBERJET Technology" },
+        { src: "/images/economia-02.jpg",          alt: "Proceso de reciclaje OTR",       captionES: "Reciclaje 100% con agua",    captionEN: "100% water recycling" },
+        { src: "/images/economia-03.jpg",          alt: "Polvo de caucho reciclado",      captionES: "Polvo reutilizable",         captionEN: "Reusable powder" },
+      ],
     },
     {
       id: "transicion",
-      label: "SECTION",
-      title: "TRANSICIÓN ENERGÉTICA",
-      description:
-        "Acompañamos a empresas e industrias en el camino hacia la descarbonización. Estrategias claras, tecnología probada y soluciones adaptadas a cada sector.",
-      image: "/images/servicio-transicion.jpg",
-      imageAlt: "Turbinas eólicas y paneles solares",
       gradientFrom: "#4AADAD",
       gradientTo:   "#90D8D8",
+      carouselImages: [
+        {
+          src: "/images/transicion-01.jpg",
+          alt: "Junta de actores para la transición energética en Arequipa",
+          captionES: "Junta regional — Transición Energética",
+          captionEN: "Regional meeting — Energy Transition",
+        },
+        {
+          src: "/images/transicion-02.jpg",
+          alt: "Jean-Louis Gelot en la Presidencia del Consejo de Ministros del Perú",
+          captionES: "Presidencia del Consejo de Ministros — Lima",
+          captionEN: "Presidency of the Council of Ministers — Lima",
+        },
+        {
+          src: "/images/transicion-03.jpg",
+          alt: "Reunión de trabajo en el desierto de Arequipa para proyecto de hidrógeno verde",
+          captionES: "Reunión en el desierto — Arequipa",
+          captionEN: "Desert meeting — Arequipa",
+        },
+        {
+          src: "/images/transicion-04.jpg",
+          alt: "Maquinaria de excavación en zona minera — infraestructura energética Arequipa",
+          captionES: "Infraestructura minera — Arequipa",
+          captionEN: "Mining infrastructure — Arequipa",
+        },
+        {
+          src: "/images/transicion-05.jpg",
+          alt: "Reunión de stakeholders para la transición energética regional",
+          captionES: "Reunión de stakeholders — Energía",
+          captionEN: "Stakeholders meeting — Energy",
+        },
+        {
+          src: "/images/transicion-06.jpg",
+          alt: "¿Cuál es la transición energética que el Perú y Arequipa requieren? — Conferencia GEOINNOVACION",
+          captionES: "¿Cuál es la transición energética que el Perú y Arequipa requieren?",
+          captionEN: "What energy transition do Peru and Arequipa need?",
+        },
+      ],
     },
     {
       id: "turismo",
-      label: "SECTION",
-      title: "TURISMO SOSTENIBLE",
-      description:
-        "Experiencias inmersivas y sostenibles que conectan viajeros con destinos únicos alrededor del mundo. La energía más limpia del planeta, ahora al alcance de tu empresa.",
-      image: "/images/servicio-hidrogeno.jpg",
-      imageAlt: "Moléculas de hidrógeno y estación de energía",
       gradientFrom: "#3D9E9E",
       gradientTo:   "#7ECECE",
+      /** Villa Elisa: 2 imágenes | Vintage Rides Andes: 2 imágenes */
+      villaImages: [
+        { src: "/images/villa-elisa-01.jpg", alt: "Hotel Boutique Villa Elisa — fachada exterior, Arequipa Perú", captionES: "Hotel Boutique Villa Elisa", captionEN: "Hotel Boutique Villa Elisa" },
+        { src: "/images/villa-elisa-02.jpg", alt: "Hotel Boutique Villa Elisa — habitación interior, Arequipa",   captionES: "Villa Elisa — Habitaciones", captionEN: "Villa Elisa — Rooms" },
+      ],
+      vraImages: [
+        { src: "/images/vra-01.jpg", alt: "Vintage Rides Andes — tour en moto por los Andes peruanos",         captionES: "Vintage Rides Andes",              captionEN: "Vintage Rides Andes" },
+        { src: "/images/vra-02.jpg", alt: "Vintage Rides Andes — paisaje andino en moto, Arequipa Perú",       captionES: "Vintage Rides Andes — Los Andes", captionEN: "Vintage Rides Andes — The Andes" },
+      ],
     },
     {
       id: "innovacion",
-      label: "SECTION",
-      title: "INNOVACIÓN Y EMPRENDIMIENTO",
-      description:
-        "Impulsamos startups y proyectos con visión de futuro. Desde la idea hasta el mercado, con herramientas digitales, mentoría y una red global de contactos.",
-      image: "/images/servicio-innovacion.jpg",
-      imageAlt: "Ecosistema de innovación y tecnología",
       gradientFrom: "#5BC8C8",
       gradientTo:   "#A8E6E6",
+      carouselImages: [
+        { src: "/images/servicio-innovacion.jpg", alt: "GEOINNOVACION — Arequipa",               captionES: "GEOINNOVACION — Arequipa",           captionEN: "GEOINNOVACION — Arequipa" },
+        { src: "/images/innovacion-02.jpg",        alt: "MIRA — Mesa de Innovación Regional",     captionES: "MIRA 2019",                          captionEN: "MIRA 2019" },
+        { src: "/images/innovacion-03.jpg",        alt: "Conferencia internacional",              captionES: "Conferencias internacionales",        captionEN: "International conferences" },
+      ],
     },
   ],
 

@@ -1,0 +1,227 @@
+/* ============================================================
+   INNOVACIÓN — carrusel cinematográfico, 1 párrafo por slide
+   ============================================================ */
+
+.section { position: relative; overflow: hidden; background: #071f18; }
+
+.bg {
+  position: absolute; inset: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='700'%3E%3Ccircle cx='1150' cy='100' r='380' fill='none' stroke='rgba(255,255,255,0.032)' stroke-width='1'/%3E%3Ccircle cx='150' cy='600' r='300' fill='none' stroke='rgba(255,255,255,0.024)' stroke-width='1'/%3E%3C/svg%3E"),
+    linear-gradient(140deg, var(--grad-from, #5BC8C8) 0%, var(--grad-to, #A8E6E6) 100%);
+  background-size: cover, cover; opacity: 0.90;
+}
+
+/* ── Layout ── */
+.inner {
+  position: relative; z-index: 1;
+  max-width: 1300px; margin: 0 auto;
+  padding: clamp(56px,7vw,100px) clamp(24px,6vw,88px);
+  display: flex; flex-direction: column; gap: 32px;
+}
+
+/* ── Cabecera ── */
+.head {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 24px;
+  flex-wrap: wrap;
+}
+
+.headLeft { display: flex; align-items: center; gap: 20px; }
+
+.sectionNum {
+  display: none;
+}
+
+.headText { display: flex; flex-direction: column; gap: 6px; }
+
+.sectionTag {
+  font-family: var(--font-montserrat); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16); padding: 4px 14px; border-radius: 999px;
+  align-self: flex-start;
+}
+
+.sectionTitle {
+  font-family: var(--font-raleway); font-size: clamp(22px,2.8vw,40px);
+  font-weight: 800; color: #fff; line-height: 1.1; letter-spacing: -0.02em;
+}
+
+.counter {
+  display: flex; align-items: baseline; gap: 5px;
+  flex-shrink: 0;
+}
+.counterActive {
+  font-family: var(--font-raleway); font-size: clamp(36px,5vw,64px);
+  font-weight: 800; color: #ffffff; line-height: 1; letter-spacing: -0.04em;
+}
+.counterSep {
+  font-family: var(--font-montserrat); font-size: 14px; font-weight: 300;
+  color: rgba(255,255,255,0.30);
+}
+.counterTotal {
+  font-family: var(--font-montserrat); font-size: 14px; font-weight: 500;
+  color: rgba(255,255,255,0.35); letter-spacing: 0.04em;
+}
+
+/* ── Carrusel: imagen derecha · texto izquierda ── */
+.carousel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text img";
+  gap: clamp(28px,5vw,64px);
+  align-items: center;
+  transition: opacity 0.38s ease, transform 0.38s ease;
+}
+
+/* Animación de salida */
+.exitLeft  { opacity: 0; transform: translateX(-32px); }
+.exitRight { opacity: 0; transform: translateX(32px); }
+
+/* Imagen */
+.imgWrap {
+  grid-area: img;
+  position: relative; aspect-ratio: 4/3;
+  border-radius: 20px; overflow: hidden;
+  box-shadow:
+    0 36px 88px rgba(0,0,0,0.42),
+    inset 0 0 0 1px rgba(255,255,255,0.10);
+}
+
+.img { object-fit: cover; transition: transform 5s ease; }
+.carousel:not(.exitLeft):not(.exitRight) .img { transform: scale(1.04); }
+
+.imgGrad {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(0,0,0,0.22) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Barra de progreso dentro de la imagen */
+.slideMarker {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: rgba(255,255,255,0.18);
+}
+.markerLine {
+  height: 100%; background: #ffffff; border-radius: 0 2px 2px 0;
+  transition: width 0.45s ease;
+}
+
+/* Texto */
+.textWrap {
+  grid-area: text;
+  display: flex; flex-direction: column; gap: 20px;
+}
+
+.slideEyebrow {
+  font-family: var(--font-montserrat); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(255,255,255,0.50);
+  padding-left: 12px;
+  border-left: 2px solid rgba(255,255,255,0.30);
+}
+
+.slidePara {
+  font-family: var(--font-montserrat);
+  font-size: clamp(14px,1.2vw,16.5px); font-weight: 400;
+  line-height: 1.90; color: rgba(255,255,255,0.82);
+  /* Texto centrado verticalmente en su área, sin overflow */
+}
+
+.extLink {
+  display: inline-flex; align-items: center; gap: 7px; align-self: flex-start;
+  font-family: var(--font-montserrat); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  border-bottom: 1px solid rgba(255,255,255,0.22); padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
+}
+.extLink:hover { color: #fff; border-color: rgba(255,255,255,0.60); }
+
+/* ── Barra inferior: dots + flechas ── */
+.bar {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 24px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+/* Dots */
+.dots { display: flex; align-items: center; gap: 8px; }
+
+.dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: rgba(255,255,255,0.22); border: none; padding: 0; cursor: pointer;
+  transition: background .25s, transform .25s, width .35s;
+}
+.dotActive {
+  background: #fff; transform: none;
+  width: 28px; border-radius: 3px;
+}
+
+/* Flechas — botones grandes con SVG circular */
+.arrows { display: flex; align-items: center; gap: 12px; }
+
+.arrow {
+  display: flex; align-items: center; gap: 10px;
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.70);
+  font-family: var(--font-montserrat); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  transition: color .2s;
+  padding: 4px 0;
+}
+.arrow:hover { color: #fff; }
+
+.arrowInner {
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .25s ease;
+}
+.arrow:first-child:hover .arrowInner { transform: translateX(-3px); }
+.arrow:last-child:hover .arrowInner  { transform: translateX(3px); }
+
+/* Hover glow en el círculo SVG */
+.arrow:hover circle { stroke: rgba(255,255,255,0.55) !important; }
+
+/* ── CTA inferior ── */
+.ctaStrip {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+  padding: 22px 30px;
+  background: rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.ctaQ {
+  font-family: var(--font-raleway); font-size: clamp(15px,1.7vw,22px);
+  font-weight: 700; color: #fff; line-height: 1.3;
+}
+
+.ctaBtn {
+  display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0;
+  font-family: var(--font-montserrat); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 13px 28px; border-radius: 50px;
+  background: rgba(255,255,255,0.14); color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.28);
+  transition: background .2s, border-color .2s, transform .2s;
+}
+.ctaBtn:hover {
+  background: rgba(255,255,255,0.24); border-color: rgba(255,255,255,0.52);
+  transform: translateY(-2px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .carousel { grid-template-columns: 1fr; grid-template-areas: "img" "text"; gap: 24px; }
+  .counterActive { font-size: 40px; }
+}
+@media (max-width: 540px) {
+  .inner { padding: 48px 20px 56px; }
+  .arrowLabel { display: none; }
+  .ctaStrip { flex-direction: column; align-items: flex-start; padding: 18px 18px; }
+  .dotActive { width: 20px; }
+}

@@ -1,0 +1,217 @@
+/* ============================================================
+   TURISMO — compacto
+   ============================================================ */
+
+.section { position: relative; overflow: hidden; background: #06211a; }
+
+.bg {
+  position: absolute; inset: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='560'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1.5' d='M0 280C480 120 960 440 1440 280'/%3E%3Ccircle cx='250' cy='100' r='280' fill='none' stroke='rgba(255,255,255,0.025)' stroke-width='1'/%3E%3C/svg%3E"),
+    linear-gradient(140deg, var(--grad-from, #3D9E9E) 0%, var(--grad-to, #7ECECE) 100%);
+  background-size: cover, cover; opacity: 0.90;
+}
+
+/* ── Layout ── */
+.inner {
+  position: relative; z-index: 1;
+  max-width: 1260px; margin: 0 auto;
+  padding: clamp(36px, 4.5vw, 60px) clamp(24px, 6vw, 80px);
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+/* ── Cabecera — una sola línea horizontal ── */
+.head {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.headLeft { display: flex; align-items: center; gap: 14px; }
+.sectionNum { display: none; }
+.headText { display: flex; align-items: center; gap: 12px; }
+
+.sectionTag {
+  font-family: var(--font-montserrat); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16); padding: 4px 12px; border-radius: 999px;
+  white-space: nowrap;
+}
+
+.sectionTitle {
+  font-family: var(--font-raleway); font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 800; color: #fff; line-height: 1; letter-spacing: -0.02em;
+}
+
+/* Contador pequeño */
+.counter { display: flex; align-items: baseline; gap: 4px; flex-shrink: 0; }
+.counterActive {
+  font-family: var(--font-raleway); font-size: clamp(22px, 3vw, 36px);
+  font-weight: 800; color: #fff; line-height: 1; letter-spacing: -0.04em;
+}
+.counterSep {
+  font-family: var(--font-montserrat); font-size: 12px; font-weight: 300;
+  color: rgba(255,255,255,0.28);
+}
+.counterTotal {
+  font-family: var(--font-montserrat); font-size: 12px; font-weight: 500;
+  color: rgba(255,255,255,0.32);
+}
+
+/* ── Tabs ── */
+.projectTabs {
+  display: flex; gap: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.projectTab {
+  font-family: var(--font-montserrat); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.36); background: none; border: none; cursor: pointer;
+  padding: 7px 18px 11px; position: relative; transition: color .2s;
+}
+.projectTab::after {
+  content: ""; position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 2px; background: #fff; border-radius: 2px 2px 0 0;
+  transform: scaleX(0); transform-origin: left; transition: transform .28s ease;
+}
+.projectTab:hover { color: rgba(255,255,255,0.68); }
+.projectTabActive { color: #fff; }
+.projectTabActive::after { transform: scaleX(1); }
+
+/* ── Carrusel: grid texto | imagen ── */
+.carousel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text img";
+  gap: clamp(24px, 4vw, 52px);
+  align-items: center;
+  transition: opacity .35s ease, transform .35s ease;
+}
+.exitLeft  { opacity: 0; transform: translateX(-24px); }
+.exitRight { opacity: 0; transform: translateX(24px); }
+
+/* Imagen — más pequeña */
+.imgWrap {
+  grid-area: img;
+  position: relative;
+  aspect-ratio: 16/10;          /* menos alta que 4/3 */
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 20px 56px rgba(0,0,0,0.38), inset 0 0 0 1px rgba(255,255,255,0.09);
+}
+.img { object-fit: cover; transition: transform 5s ease; }
+.carousel:not(.exitLeft):not(.exitRight) .img { transform: scale(1.03); }
+
+.imgGrad {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(0,0,0,0.20) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.slideMarker {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: rgba(255,255,255,0.16);
+}
+.markerLine {
+  height: 100%; background: #fff; border-radius: 0 2px 2px 0;
+  transition: width .45s ease;
+}
+
+.imgProjectBadge {
+  position: absolute; top: 14px; left: 14px; z-index: 2;
+  font-family: var(--font-montserrat); font-size: 8px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85);
+  background: rgba(0,0,0,0.36); border: 1px solid rgba(255,255,255,0.18);
+  padding: 4px 12px; border-radius: 999px; backdrop-filter: blur(8px);
+}
+
+/* Texto */
+.textWrap {
+  grid-area: text;
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+.slideEyebrow {
+  font-family: var(--font-montserrat); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.72);
+  padding-left: 12px; border-left: 2px solid rgba(255,255,255,0.45);
+}
+
+.slidePara {
+  font-family: var(--font-montserrat);
+  font-size: clamp(14px, 1.25vw, 17px); font-weight: 400;
+  line-height: 1.85; color: rgba(255,255,255,0.90);
+}
+
+.extLink {
+  display: inline-flex; align-items: center; gap: 6px; align-self: flex-start;
+  font-family: var(--font-montserrat); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.52);
+  border-bottom: 1px solid rgba(255,255,255,0.20); padding-bottom: 1px;
+  transition: color .2s, border-color .2s;
+}
+.extLink:hover { color: #fff; border-color: rgba(255,255,255,0.58); }
+
+/* ── Barra: dots + flechas ── */
+.bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.09);
+}
+
+.dots { display: flex; align-items: center; gap: 7px; }
+.dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: rgba(255,255,255,0.22); border: none; padding: 0; cursor: pointer;
+  transition: background .22s, width .30s;
+}
+.dotActive { background: #fff; width: 22px; border-radius: 3px; }
+.dotProject2 { background: rgba(255,255,255,0.14); }
+.dotProject2.dotActive { background: #fff; }
+
+.arrows { display: flex; align-items: center; gap: 10px; }
+.arrow {
+  display: flex; align-items: center; gap: 8px;
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.60);
+  font-family: var(--font-montserrat); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  transition: color .2s; padding: 2px 0;
+}
+.arrow:hover { color: #fff; }
+.arrowInner { display: flex; align-items: center; transition: transform .22s ease; }
+.arrow:first-child:hover .arrowInner { transform: translateX(-3px); }
+.arrow:last-child:hover  .arrowInner { transform: translateX(3px); }
+.arrow:hover circle { stroke: rgba(255,255,255,0.50) !important; }
+
+/* ── CTA — horizontal compacta ── */
+.ctaStrip {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+  padding: 14px 22px;
+  background: rgba(0,0,0,0.20); border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px; backdrop-filter: blur(8px);
+}
+.ctaQ {
+  font-family: var(--font-raleway); font-size: clamp(13px, 1.4vw, 17px);
+  font-weight: 700; color: #fff;
+}
+.ctaBtns { display: flex; flex-wrap: wrap; gap: 8px; }
+.ctaBtn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-montserrat); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.10em; text-transform: uppercase;
+  padding: 9px 18px; border-radius: 50px;
+  background: rgba(255,255,255,0.12); color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.26);
+  transition: background .2s, transform .2s;
+}
+.ctaBtn:hover { background: rgba(255,255,255,0.22); transform: translateY(-2px); }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .carousel { grid-template-columns: 1fr; grid-template-areas: "img" "text"; gap: 18px; }
+  .imgWrap { aspect-ratio: 16/9; }
+}
+@media (max-width: 480px) {
+  .inner { padding: 32px 18px 44px; }
+  .arrowLabel { display: none; }
+  .ctaStrip { flex-direction: column; align-items: flex-start; padding: 14px 16px; }
+}

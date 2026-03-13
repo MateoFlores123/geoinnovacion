@@ -2,6 +2,17 @@ import type { Metadata, Viewport } from "next";
 import { Montserrat, Raleway } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
+import { LangProvider } from "@/components/LangContext";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="es" className={`${montserrat.variable} ${raleway.variable}`}>
+      <body>
+        <LangProvider>{children}</LangProvider>
+      </body>
+    </html>
+  );
+}
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -73,14 +84,5 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="es" className={`${montserrat.variable} ${raleway.variable}`}>
-      <body>{children}</body>
-    </html>
-  );
-}
+
+

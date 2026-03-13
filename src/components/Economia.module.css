@@ -1,0 +1,226 @@
+/* ============================================================
+   SERVICIO BASE — estilos compartidos entre todas las secciones
+   Cada sección importa esto como su propio module (copiado)
+   y añade solo su color de fondo único.
+   ============================================================ */
+
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo: degradado teal + patrón SVG de ondas */
+.bg {
+  position: absolute;
+  inset: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1440' height='640'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1.5' d='M0 320C360 160 720 480 1080 300S1440 220 1440 320'/%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1' d='M0 200C360 80 720 340 1080 180S1440 120 1440 200'/%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.025)' stroke-width='1' d='M0 450C480 280 960 580 1440 420'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, var(--grad-from) 0%, var(--grad-to) 100%);
+  background-size: cover, cover;
+  opacity: 0.92;
+}
+
+/* Grid principal: texto izquierda | carrusel derecha */
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: clamp(72px, 9vw, 120px) clamp(28px, 6vw, 88px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 7vw, 104px);
+  align-items: stretch;
+}
+
+/* ══════════════════════════
+   COLUMNA TEXTO — izquierda
+══════════════════════════ */
+.textCol {
+  height: 100%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Eyebrow: número grande + tag pill */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.num {
+  display: none;
+}
+
+.labelTag {
+  font-family: var(--font-montserrat);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.60);
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.18);
+  padding: 5px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* Título */
+.title {
+  font-family: var(--font-raleway);
+  font-size: clamp(24px, 3vw, 42px);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+/* Línea divisora */
+.divider {
+  width: 44px;
+  height: 3px;
+  background: rgba(255,255,255,0.38);
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+/* Párrafos */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-bottom: 32px;
+}
+.body p {
+  font-family: var(--font-montserrat);
+  font-size: clamp(13px, 1.05vw, 14.5px);
+  font-weight: 400;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.76);
+}
+
+/* ══════════════════════════
+   BLOQUE CTA — tarjeta glass
+══════════════════════════ */
+.ctaCard {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 22px 26px;
+  background: rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.ctaQuestion {
+  font-family: var(--font-raleway);
+  font-size: clamp(15px, 1.5vw, 20px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.ctaBtns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Botón primario — teal */
+.btnPrimary {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 9px;
+  font-family: var(--font-montserrat);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.18);
+  color: #ffffff;
+  border: 1.5px solid rgba(255,255,255,0.32);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btnPrimary:hover {
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.20);
+}
+
+/* Botón WhatsApp — verde */
+.btnWA {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 9px;
+  font-family: var(--font-montserrat);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border-radius: 50px;
+  background: #25D366;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.30);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btnWA:hover {
+  background: #1fb954;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.42);
+}
+
+/* ══════════════════════════
+   COLUMNA CARRUSEL — derecha
+══════════════════════════ */
+
+
+/* ══════════════════════════
+   RESPONSIVE
+══════════════════════════ */
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+   /* carrusel arriba en móvil */
+}
+
+@media (max-width: 480px) {
+  .inner { padding: 52px 20px 60px; }
+  .ctaCard {
+  margin-top: auto; padding: 18px 18px; }
+  .ctaBtns { flex-direction: column; }
+  .btnPrimary,
+  .btnWA { justify-content: center; }
+}
+
+/* ── Carrusel ocupa toda la altura de la columna ── */
+.carouselCol {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Forzar que el ImageCarousel se estire dentro de la col */
+.carouselCol > * {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
