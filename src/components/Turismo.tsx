@@ -19,7 +19,7 @@ export function Turismo() {
   const [anim,    setAnim]    = useState(false);
 
   const imgs  = project === "villa" ? cfg.villaImages : cfg.vraImages;
-  const total = imgs.length; // siempre 2
+  const total = (imgs ?? []).length;
 
   const go = useCallback((direction: "next" | "prev") => {
     setDir(direction);
