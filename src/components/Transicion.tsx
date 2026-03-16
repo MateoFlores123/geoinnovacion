@@ -10,10 +10,10 @@ export function Transicion() {
   const tx  = serviciosTrans.transicion[lang];
   const cfg = siteConfig.servicios.find((s) => s.id === "transicion")!;
 
-  const slides = cfg.carouselImages.map(img => ({
-    src:     img.src,
-    alt:     img.alt,
-    caption: lang === "ES" ? img.captionES : img.captionEN,
+  const slides = (cfg.carouselImages ?? []).map(img => ({
+  src: img.src,
+  alt: img.alt,
+  caption: lang === "ES" ? img.captionES : img.captionEN,
   }));
 
   return (
