@@ -36,8 +36,8 @@ export function Innovacion() {
     }, 380);
   }, [total]);
 
-  const s       = slides[active];
-  const imgData = imgs[s.imgIdx] ?? imgs[0];
+  const s = slides[active];
+  const imgData = (imgs ?? [])[s.imgIdx] ?? (imgs ?? [])[0];
   const eyebrow = lang === "ES" ? s.eyebrowES : s.eyebrowEN;
 
   return (
