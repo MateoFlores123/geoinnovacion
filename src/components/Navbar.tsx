@@ -16,7 +16,6 @@ const navTrans = {
       { label: "Turismo",               href: "#turismo"    },
       { label: "Contacto",              href: "#contacto"   },
     ],
-    whatsappTop: "Únete en",
     whatsappBtn: "WhatsApp",
   },
   EN: {

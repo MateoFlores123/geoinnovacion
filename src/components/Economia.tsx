@@ -16,11 +16,11 @@ export function Economia() {
   const tx  = serviciosTrans.economia[lang];
   const cfg = siteConfig.servicios.find((s) => s.id === "economia")!;
 
-  const slides = cfg.carouselImages.map(img => ({
-    src:     img.src,
-    alt:     img.alt,
-    caption: lang === "ES" ? img.captionES : img.captionEN,
-  }));
+const slides = (cfg.carouselImages ?? []).map(img => ({
+  src: img.src,
+  alt: img.alt,
+  caption: lang === "ES" ? img.captionES : img.captionEN,
+}));
 
   return (
     <section id="economia" className={styles.section}
@@ -30,6 +30,7 @@ export function Economia() {
       <div className={styles.inner}>
         <div className={styles.textCol}>
           <div className={styles.eyebrow}>
+            <span className={styles.num}>02</span>
             <span className={styles.labelTag}>{tx.label}</span>
           </div>
           <h2 className={styles.title}>{tx.title}</h2>
