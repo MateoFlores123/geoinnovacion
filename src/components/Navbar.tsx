@@ -191,7 +191,7 @@ export function Navbar() {
               className={styles.whatsappBtn} aria-label="Contactar por WhatsApp">
               <WhatsAppIcon />
               <div className={styles.whatsappBtnText}>
-                <span>{tx.whatsappTop}</span>
+                <span>{'whatsappTop' in tx ? tx.whatsappTop : ''}</span>
                 <strong>{tx.whatsappBtn}</strong>
               </div>
             </a>
