@@ -35,7 +35,7 @@ export function Turismo() {
     setImgIdx(0);
   };
 
-  const imgData = imgs[imgIdx];
+  const imgData = (imgs ?? [])[imgIdx];
 
   /* Texto según proyecto + slide */
   const textSlides: Record<Project, string[]> = {
@@ -127,7 +127,7 @@ export function Turismo() {
         {/* ── Barra: dots + flechas ── */}
         <div className={styles.bar}>
           <div className={styles.dots}>
-            {imgs.map((_, i) => (
+            {(imgs ?? []).map((_, i) => (
               <button key={i}
                 className={`${styles.dot} ${i === imgIdx ? styles.dotActive : ""}`}
                 onClick={() => setImgIdx(i)} aria-label={`Imagen ${i+1}`} />
